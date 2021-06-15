@@ -23,9 +23,33 @@ namespace Core.Specification
         public List<Expression<Func<T, object>>> Includes { get; } = 
             new List<Expression<Func<T, object>>>();
 
+        public Expression<Func<T, object>> OrderBy { get; private set; }
+
+        public Expression<Func<T, object>> OrderByDesc { get; private set; }
+
+        public int Take { get; private set; }
+
+        public int Skip { get; private set; }
+
+        public bool IsPagingEnable { get; private set; }
+
         protected void AddInclude(Expression<Func<T, object>> includeExpession)
         {
             Includes.Add(includeExpession);
+        }
+        protected void AddOrderby(Expression<Func<T, object>> orderByExpression)
+        {
+            OrderBy=orderByExpression;
+        }
+        protected void AddOrderbyDesc(Expression<Func<T, object>> orderByExpressionDesc)
+        {
+            OrderByDesc = orderByExpressionDesc;
+        }
+        protected void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            IsPagingEnable = true;
         }
     }
 }
