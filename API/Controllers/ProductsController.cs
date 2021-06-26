@@ -17,8 +17,8 @@ namespace API.Controllers
     public class ProductsController : BaseApiController
     {
         private IGenericRespository<Product> _productsRepo;
-        private IGenericRespository<Product> _productsTypeRepo;
-        private IGenericRespository<Product> _productsBrandsRepo;
+        private IGenericRespository<ProductType> _productsTypeRepo;
+        private IGenericRespository<ProductBrand> _productsBrandsRepo;
         private IMapper _mapper;
 
         public ProductsController(IGenericRespository<Product> productRepository,
@@ -26,8 +26,8 @@ namespace API.Controllers
             IGenericRespository<ProductType> productTypesRepository,IMapper mapper )
         {
             _productsRepo = productRepository;
-            _productsTypeRepo = productRepository;
-            _productsBrandsRepo = productRepository;
+            _productsTypeRepo = productTypesRepository;
+            _productsBrandsRepo = productBrandsRepository;
             _mapper = mapper;
         }
 
